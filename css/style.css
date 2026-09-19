@@ -414,7 +414,7 @@ h1 {
   }
 
   .guest-overlay--homecoming {
-    top: 55%;
+    top: 52%;
     width: 84%;
     font-size: clamp(28px, 7.2vw, 54px);
   }
