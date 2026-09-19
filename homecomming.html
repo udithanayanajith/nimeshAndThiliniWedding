@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homecoming Invitation Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="form-card">
+      <p class="eyebrow">Homecoming Invitation</p>
+      <h1>Customize Guest Details</h1>
+      <p class="section-copy">Choose the title, enter the guest name, and export the preview exactly as shown into an A4 portrait PDF.</p>
+
+      <form class="invitation-form" data-invitation-form>
+        <label for="homecoming-title">Title / Address Type</label>
+        <select id="homecoming-title" data-field="title">
+          <option value="" selected>Select title</option>
+          <option value="MR">MR</option>
+          <option value="MRS">MRS</option>
+          <option value="MS">MS</option>
+          <option value="MISS">MISS</option>
+          <option value="MASTER">MASTER</option>
+          <option value="DR">DR</option>
+          <option value="REV">REV</option>
+          <option value="VEN">VEN</option>
+          <option value="MR &amp; MRS">MR &amp; MRS</option>
+          <option value="MR &amp; MRS &amp; FAMILY">MR &amp; MRS &amp; FAMILY</option>
+          <option value="FAMILY">FAMILY</option>
+        </select>
+
+        <label for="homecoming-name">Guest Name</label>
+        <input id="homecoming-name" type="text" data-field="name" placeholder="Enter guest surname or full name">
+
+        <div class="form-actions">
+          <button type="button" class="primary-button" data-download-pdf>Download PDF</button>
+          <a class="secondary-link" href="index.html">Back to Home</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="preview-card">
+      <div
+        class="invitation-preview invitation-preview--homecoming"
+        data-invitation-type="homecoming"
+        data-filename-prefix="homecoming"
+        data-preview-root
+      >
+        <img src="assets/homecomming.png" alt="Homecoming invitation template">
+        <div class="guest-overlay guest-overlay--homecoming">
+          <span class="guest-overlay__text" data-preview-name></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

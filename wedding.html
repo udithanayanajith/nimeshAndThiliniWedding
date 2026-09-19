@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Invitation Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="form-card">
+        <p class="eyebrow">Wedding Invitation</p>
+        <h1>Customize Guest Details</h1>
+        <p class="section-copy">
+          Enter the guest information below. The invitation preview updates
+          instantly and the PDF export captures only the card.
+        </p>
+
+        <form class="invitation-form" data-invitation-form>
+          <label for="wedding-title">Title / Address Type</label>
+          <select id="wedding-title" data-field="title">
+            <option value="" selected>Select title</option>
+            <option value="MR">MR</option>
+            <option value="MRS">MRS</option>
+            <option value="MS">MS</option>
+            <option value="MISS">MISS</option>
+            <option value="MASTER">MASTER</option>
+            <option value="DR">DR</option>
+            <option value="REV">REV</option>
+            <option value="VEN">VEN</option>
+            <option value="MR &amp; MRS">MR &amp; MRS</option>
+            <option value="MR &amp; MRS &amp; FAMILY">
+              MR &amp; MRS &amp; FAMILY
+            </option>
+            <option value="FAMILY">FAMILY</option>
+          </select>
+
+          <label for="wedding-name">Guest Name</label>
+          <input
+            id="wedding-name"
+            type="text"
+            data-field="name"
+            placeholder="Enter guest surname or full name"
+          />
+
+          <label for="wedding-table"
+            >Table Number <span class="muted">(Optional)</span></label
+          >
+          <input
+            id="wedding-table"
+            type="text"
+            data-field="table"
+            placeholder="Enter table number"
+          />
+
+          <div class="form-actions">
+            <button type="button" class="primary-button" data-download-pdf>
+              Download PDF
+            </button>
+            <a class="secondary-link" href="index.html">Back to Home</a>
+          </div>
+        </form>
+      </section>
+
+      <section class="preview-card">
+        <div
+          class="invitation-preview invitation-preview--wedding"
+          data-invitation-type="wedding"
+          data-filename-prefix="wedding"
+          data-preview-root
+        >
+          <img src="assets/wedding.png" alt="Wedding invitation template" />
+          <div class="guest-overlay guest-overlay--wedding">
+            <span class="guest-overlay__text" data-preview-name></span>
+          </div>
+          <div class="table-overlay" data-preview-table></div>
+        </div>
+      </section>
+    </main>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+      integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
