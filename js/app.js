@@ -38,13 +38,14 @@
     var normalizedTitle = normalizeTitle(title);
     var normalizedName = toTitleCase(name);
     var displayTitle = sanitizeText(title);
+    var sanitizedName = sanitizeText(name);
 
-    if (!normalizedName) {
+    if (!sanitizedName) {
       return "";
     }
 
     if (normalizedTitle === "FAMILY") {
-      return (displayTitle || "FAMILY") + " " + normalizedName;
+      return "Family of " + sanitizedName;
     }
 
     if (normalizedTitle === "MR & MRS & FAMILY") {
@@ -67,10 +68,11 @@
       .replace(/^_+|_+$/g, "");
   }
 
-  function generateSafeFilename(type, title, name) {
+  function generateSafeFilename(type, title, name, extension) {
     var typePart = safeFilenamePart(type || "invitation").toLowerCase();
     var titlePart = safeFilenamePart(title || "");
     var namePart = safeFilenamePart(name || "");
+    var ext = (extension || "pdf").replace(/^\./, "");
     var parts = [typePart];
 
     if (titlePart) {
@@ -81,7 +83,17 @@
       parts.push(namePart);
     }
 
-    return parts.join("_") + ".pdf";
+    return parts.join("_") + "." + ext;
+  }
+
+  function downloadDataUrl(dataUrl, filename) {
+    var link = document.createElement("a");
+
+    link.href = dataUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 
   function updatePreviewText(config) {
@@ -238,13 +250,29 @@
       undefined,
       "FAST",
     );
-    pdf.save(
+    // Download the exact same invitation as a PNG image first, then the PDF.
+    // Spacing the two triggers on separate ticks keeps browsers from
+    // suppressing the second download when they fire back-to-back.
+    downloadDataUrl(
+      imageData,
       generateSafeFilename(
         config.previewRoot.dataset.filenamePrefix,
         config.titleInput.value,
         guestName,
+        "png",
       ),
     );
+
+    window.setTimeout(function () {
+      pdf.save(
+        generateSafeFilename(
+          config.previewRoot.dataset.filenamePrefix,
+          config.titleInput.value,
+          guestName,
+          "pdf",
+        ),
+      );
+    }, 150);
   }
 
   function initInvitationPage() {
@@ -288,6 +316,7 @@
 
   window.formatGuestName = formatGuestName;
   window.generateSafeFilename = generateSafeFilename;
+  window.downloadDataUrl = downloadDataUrl;
   window.updateInvitationPreview = updatePreviewText;
   window.downloadInvitationPDF = downloadPDF;
 

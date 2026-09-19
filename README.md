@@ -1,4 +1,2 @@
 "# wedding_invitation" 
-# nimeshAndThiliniWedding
-# nimeshAndThiliniWedding
-# nimeshAndThiliniWedding
+# uditha-wedding

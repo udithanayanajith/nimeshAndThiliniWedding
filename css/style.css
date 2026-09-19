@@ -241,6 +241,9 @@ h1 {
   overflow: hidden;
   background: #fff;
   box-shadow: 0 20px 50px rgba(53, 58, 49, 0.18);
+  /* Size the overlay text relative to the card width (cqw) so the on-screen
+     preview and the 1240px download render at identical proportions. */
+  container-type: inline-size;
 }
 
 .invitation-preview img {
@@ -284,21 +287,13 @@ h1 {
 .guest-overlay__text {
   display: inline-block;
   max-width: 100%;
-  padding: 0 10px 18px;
+  padding: 0 10px;
   margin: 0;
 }
 
-.guest-overlay__text::after {
-  content: "";
-  display: block;
-  width: 100%;
-  margin: 2px auto 0;
-  border-bottom: 1.5px solid rgba(121, 112, 85, 0.62);
-}
-
 .guest-overlay--wedding {
-  top: 52%;
-  font-size: clamp(16px, 2.3vw, 35px);
+  top: 47.25%;
+  font-size: 4.86cqw; /* 35px at 720px card width */
   font-weight: 600;
   letter-spacing: 0.06em;
   color: #4f5749;
@@ -307,7 +302,7 @@ h1 {
 .guest-overlay--homecoming {
   top: 58%;
   width: 82.2%;
-  font-size: clamp(22px, 2.8vw, 42px);
+  font-size: 5.83cqw; /* 42px at 720px card width */
   font-weight: 600;
   font-style: italic;
   color: #71716f;
@@ -322,33 +317,26 @@ h1 {
   align-items: center;
   justify-content: center;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(14px, 1.5vw, 24px);
+  font-size: 3.33cqw; /* 24px at 720px card width */
   font-weight: 700;
   color: #7b6d4b;
-}
-
-.invitation-preview--export .guest-overlay__text {
-  padding: 0 10px 0;
 }
 
 .invitation-preview--export .guest-overlay--wedding {
   top: 826px;
   width: 76%;
-  font-size: 35px;
   transform: translateX(-50%);
 }
 
 .invitation-preview--export .guest-overlay--homecoming {
   top: 1014px;
   width: 82.2%;
-  font-size: 42px;
   transform: translateX(-50%);
 }
 
 .invitation-preview--export .table-overlay {
   top: 1449px;
   width: 12%;
-  font-size: 24px;
   left: 56.8%;
   transform: translateX(-50%);
 }
