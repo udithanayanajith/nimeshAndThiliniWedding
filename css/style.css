@@ -254,16 +254,18 @@ h1 {
 
 .invitation-preview--export {
   position: fixed;
-  top: -99999px;
+  top: 0;
   left: -99999px;
   width: 1240px;
   height: 1748px;
-  aspect-ratio: auto;
+  aspect-ratio: 1240 / 1748;
   border-radius: 0;
   box-shadow: none;
-  overflow: visible;
+  overflow: hidden;
   margin: 0;
   padding: 0;
+  transform: none;
+  filter: none;
 }
 
 .guest-overlay,
@@ -278,31 +280,39 @@ h1 {
 }
 
 .guest-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #505345;
   font-family: "Cormorant Garamond", serif;
-  line-height: 1.18;
+  line-height: 1.08;
   text-wrap: balance;
 }
 
 .guest-overlay__text {
-  display: inline-block;
+  display: block;
+  width: 100%;
   max-width: 100%;
-  padding: 0 10px;
+  padding: 0 12px;
   margin: 0;
+  line-height: 0.95;
+  text-align: center;
 }
 
 .guest-overlay--wedding {
-  top: 47.25%;
-  font-size: 4.86cqw; /* 35px at 720px card width */
+  top: 52%;
+  width: 80%;
+  font-size: 7.1cqw; /* larger guest name for live preview and download */
   font-weight: 600;
-  letter-spacing: 0.06em;
+  font-style: italic;
+  letter-spacing: 0.05em;
   color: #4f5749;
 }
 
 .guest-overlay--homecoming {
   top: 58%;
   width: 82.2%;
-  font-size: 5.83cqw; /* 42px at 720px card width */
+  font-size: 6.9cqw; /* larger guest name for live preview and download */
   font-weight: 600;
   font-style: italic;
   color: #71716f;
@@ -316,6 +326,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   font-family: "Cormorant Garamond", serif;
   font-size: 3.33cqw; /* 24px at 720px card width */
   font-weight: 700;
@@ -323,9 +334,19 @@ h1 {
 }
 
 .invitation-preview--export .guest-overlay--wedding {
-  top: 826px;
-  width: 76%;
+  top: 52%;
+  width: 960px;
+  font-size: 94px;
+  line-height: 1;
+  letter-spacing: 0.04em;
   transform: translateX(-50%);
+}
+
+.invitation-preview--export .guest-overlay__text {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .invitation-preview--export .guest-overlay--homecoming {
@@ -383,15 +404,15 @@ h1 {
   }
 
   .guest-overlay--wedding {
-    top: 47.8%;
+    top: 52%;
     width: 80%;
-    font-size: clamp(16px, 4vw, 28px);
+    font-size: clamp(26px, 7vw, 52px);
   }
 
   .guest-overlay--homecoming {
     top: 55%;
     width: 84%;
-    font-size: clamp(18px, 4.2vw, 32px);
+    font-size: clamp(28px, 7.2vw, 54px);
   }
 
   .table-overlay {
