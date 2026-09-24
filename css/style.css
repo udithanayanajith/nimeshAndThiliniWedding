@@ -302,7 +302,7 @@ h1 {
 .guest-overlay--wedding {
   top: 52%;
   width: 80%;
-  font-size: 5.5cqw; /* larger guest name for live preview and download */
+  font-size: 4.5cqw; /* larger guest name for live preview and download */
   font-weight: 600;
   font-style: italic;
   letter-spacing: 0.05em;
@@ -312,7 +312,7 @@ h1 {
 .guest-overlay--homecoming {
   top: 52%;
   width: 82.2%;
-  font-size: 5.5cqw; /* larger guest name for live preview and download */
+  font-size: 4.5cqw; /* larger guest name for live preview and download */
   font-weight: 600;
   font-style: italic;
   color: #990000;
